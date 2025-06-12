@@ -4,6 +4,21 @@ body {
         color: #333;
       }
 
+      /* Apply styles for tablets and larger screens */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px; /* Increase font size */
+  }
+}
+
+/* Apply styles for desktops and larger screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px; /* Further increase font size */
+  }
+}
+
+
       #main-body {
         display:block;
         margin: 0 auto;
@@ -27,6 +42,27 @@ body {
         background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
         color: white;
       }
+              /* Apply styles for tablets and larger screens */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px; /* Increase font size */
+  }
+}
+
+/* Apply styles for desktops and larger screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px; /* Further increase font size */
+  }
+}
+
+  @media (min-width:375px) {
+    body{
+        font-size: 10px;;
+    }
+  }
+
+
       form {
         display: flex;
         justify-content: center;
