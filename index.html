@@ -4,109 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domain Search Application</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #cacbcc;
-        margin: 0;
-        padding: 20px;
-      }
-      h1 {
-        text-align: center;
-        color: #333;
-      }
-      form {
-        display: flex;
-        justify-content: space-evenly;
-      }
-
-      .searchForm {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px;
-      }
-
-      button {
-        padding: 10px 20px;
-        background-color: #000000;
-        color: white;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #fffdfd;
-        color: #000000;
-        border: 1px solid #000000;
-        transition: all 0.3s ease;
-      }
-
-      h3 {
-        color: #2c2b2b;
-        text-align: center;
-      }
-
-      #searchResults {
-        margin-top: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-      }
-
-      #previousSearches {
-        margin-top: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-      }
-      #previousSearch {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px;
-      }
-    </style>
+      <h1><div id="header">Domain Search Application</div></h1>
+     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <hr />
-    <h1>Domain Search</h1>
-    <form id="searchForm">
+    
+            <form id="searchForm">
       <label for="domainInput"></label>
       <input
         type="text"
         id="domainInput"
         name="domainInput"
         placeholder="Eg-www.abc.com"
+        autofocus
         required
       />
       <button id="searchButton">Search</button>
     </form>
     <br />
-    <h3>Search Results</h3>
-    <div id="searchResults">
-      <span
-        ><i
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          quas, aperiam, odio fugit blanditiis vitae minus expedita a laboriosam
-          quos eaque? In, maxime. Neque rerum saepe odio at error facere!</i
-        ></span
-      >
-    </div>
-    <br />
-    <h3>Previous Searches</h3>
-    <div id="previousSearches">
-      <span id="previousSearch">www.google.com</span>
-      <span id="previousSearch">www.google.com</span>
-      <span id="previousSearch">www.GooGle.com</span>
-      <span id="previousSearch">www.Google.com</span>
-    </div>
+    <div id="main-body">
+    <div id="main-container">
+        <div id="container-1">
+           <h3><div id="Results">Search Results</div></h3>
+            <div id="searchResults">
+             <i> Eg:-Name: ABC.COM<br />
+               Domain Name: ABC.COM<br />
+            Domain Name Server: ns1.abc.com<br />
+            Domain Registered On: 1996-05-22T04:00:00Z <br />
+            Domain Expires On: 2026-05-23T04:00:00Z <br /></i
+        ></div> </div>
+
+        <div id="container-2">
+        <h3><div id="PrvSearches">Previous Searches</div></h3>
+           <div id="History">
+           <span id="SL1">No search history yet</span>
+           </div>
+       </div>
+     </div>
     <footer>
-      <hr />
+    <p></p>
     </footer>
-    <script src="newwscript.js"></script>
+    <script src="script.js"></script>
+    </div>
   </body>
 </html>
