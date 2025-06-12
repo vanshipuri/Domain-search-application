@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain Search Application</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #cacbcc;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      form {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .searchForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #000000;
+        color: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #fffdfd;
+        color: #000000;
+        border: 1px solid #000000;
+        transition: all 0.3s ease;
+      }
+
+      h3 {
+        color: #2c2b2b;
+        text-align: center;
+      }
+
+      #searchResults {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      #previousSearches {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+      #previousSearch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <hr />
+    <h1>Domain Search</h1>
+    <form id="searchForm">
+      <label for="domainInput"></label>
+      <input
+        type="text"
+        id="domainInput"
+        name="domainInput"
+        placeholder="Eg-www.abc.com"
+        required
+      />
+      <button id="searchButton">Search</button>
+    </form>
+    <br />
+    <h3>Search Results</h3>
+    <div id="searchResults">
+      <span
+        ><i
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+          quas, aperiam, odio fugit blanditiis vitae minus expedita a laboriosam
+          quos eaque? In, maxime. Neque rerum saepe odio at error facere!</i
+        ></span
+      >
+    </div>
+    <br />
+    <h3>Previous Searches</h3>
+    <div id="previousSearches">
+      <span id="previousSearch">www.google.com</span>
+      <span id="previousSearch">www.google.com</span>
+      <span id="previousSearch">www.GooGle.com</span>
+      <span id="previousSearch">www.Google.com</span>
+    </div>
+    <footer>
+      <hr />
+    </footer>
+    <script src="newwscript.js"></script>
+  </body>
+</html>
