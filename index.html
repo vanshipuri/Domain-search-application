@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domain Search Application</title>
-      <h1><div id="header">Domain Search Application</div></h1>
-     <link rel="stylesheet" href="style.css" />
+    <div id="header">
+      <h2>Domain Search Application</h2>
+    </div>
+    <div  id="changeMode"></div>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    
-            <form id="searchForm">
+    <div id="Mode">
+      <button id="theme">Change Mode</button>
+     <form id="searchForm">
       <label for="domainInput"></label>
       <input
         type="text"
@@ -23,28 +28,32 @@
     </form>
     <br />
     <div id="main-body">
-    <div id="main-container">
+      <div id="main-container">
         <div id="container-1">
-           <h3><div id="Results">Search Results</div></h3>
-            <div id="searchResults">
-             <i> Eg:-Name: ABC.COM<br />
-               Domain Name: ABC.COM<br />
-            Domain Name Server: ns1.abc.com<br />
-            Domain Registered On: 1996-05-22T04:00:00Z <br />
-            Domain Expires On: 2026-05-23T04:00:00Z <br /></i
-        ></div> </div>
+          <h3><div id="Results"><i>Search Results</i></div></h3>
+          <div id="searchResults">
+            <i>
+              Eg:-Name: ABC.COM<br />
+              Domain Name: ABC.COM<br />
+              Domain Name Server: ns1.abc.com<br />
+              Domain Registered On: 1996-05-22T04:00:00Z <br />
+              Domain Expires On: 2026-05-23T04:00:00Z <br
+            /></i>
+          </div>
+        </div>
 
         <div id="container-2">
-        <h3><div id="PrvSearches">Previous Searches</div></h3>
-           <div id="History">
-           <span id="SL1">No search history yet</span>
-           </div>
-       </div>
-     </div>
-    <footer>
-    <p></p>
-    </footer>
-    <script src="script.js"></script>
+          <h3><div id="PrvSearches"><i>History</i></div></h3>
+          <div id="History">
+            <span id="SL1">No search history yet</span>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p></p>
+      </footer>
+      <script src="script.js"></script>
+    </div>
     </div>
   </body>
 </html>
