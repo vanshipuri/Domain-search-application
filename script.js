@@ -41,6 +41,11 @@ document
       (nameServers || []).join(", ") || "N/A"
     }<br>
   `;
+
+  // If no whois data is found or the domain is not registered , display a message
+if(!createdDate && !updatedDate && !expiresDate && !registrant && !nameServers) {
+  searchResults.innerHTML = `<span>This Domain Name is not Registered</span>`;
+}
         })
         .catch((error) => {
           console.error("Fetch error:", error);
