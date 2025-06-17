@@ -1,91 +1,56 @@
-document
-  .getElementById("searchButton")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    const domainInput = document.getElementById("domainInput").value.trim();
-    const searchResults = document.getElementById("searchResults");
-    console.log("Button clicked");
-    if (domainInput) {
-      // Show loading message
-
-      searchResults.innerHTML = `<span>Loading...</span>`;
-
-      // Build API URL
-      const apiKey = "at_9Cn3lniJtCJrh4fBKo8bbwLhOqDHt";
-      const apiUrl = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_9Cn3lniJtCJrh4fBKo8bbwLhOqDHt&domainName=${domainInput}&outputFormat=json
-     `;
-      console.log("API URL:", apiUrl);
-
-      fetch(apiUrl, { method: "GET", redirect: "follow" })
-        .then((response) => response.json())
-
-        .then((result) => {
-          console.log("API result:", result);
-
-          // Extract values from the API response
-          const domainName = result.WhoisRecord?.domainName;
-          const createdDate = result.WhoisRecord?.createdDate;
-          const updatedDate = result.WhoisRecord?.updatedDate;
-          const expiresDate = result.WhoisRecord?.expiresDate;
-          const registrant = result.WhoisRecord?.registrant;
-          const nameServers = result.WhoisRecord?.nameServers?.hostNames;
-
-          searchResults.innerHTML = `
-    <strong>Domain Name:</strong> ${domainName || "N/A"}<br>
-    <strong>Created:</strong> ${createdDate || "N/A"}<br>
-    <strong>Updated:</strong> ${updatedDate || "N/A"}<br>
-    <strong>Expires:</strong> ${expiresDate || "N/A"}<br>
-    <strong>Registrant Name:</strong> ${registrant?.name || "N/A"}<br>
-    <strong>Registrant Email:</strong> ${registrant?.email || "N/A"}<br>
-    <strong>Name Servers:</strong> ${
-      (nameServers || []).join(", ") || "N/A"
-    }<br>
-  `;
-
-  // If no whois data is found or the domain is not registered , display a message
-if(!createdDate && !updatedDate && !expiresDate && !registrant && !nameServers) {
-  searchResults.innerHTML = `<span>This Domain Name is not Registered</span>`;
+/**
+ * Handles the search button press by starting a WHOIS lookup.
+ * @param {Event} event - The event object from the button click.
+ * @returns {void}
+ */
+function handleSearchKeyPress(event) {
+  event.preventDefault();
+  const domainInput = document.getElementById("domainInput").value.trim();
+  const searchResults = document.getElementById("searchResults");
+  console.log("Button clicked");
+  if (domainInput) {
+    fetchWhoisData(domainInput);
+    appendSearchToHistory(domainInput);
+  }
 }
-        })
-        .catch((error) => {
-          console.error("Fetch error:", error);
-          searchResults.innerHTML = `<span>Error: ${error}</span>`;
-        });
 
-        //Show all the searches in previous searches
-        
+function fetchWhoisData(domainInput) {
+  // Show loading message
+  const searchResults = document.getElementById("searchResults");
+  searchResults.innerHTML = `<span>Loading...</span>`;
 
-      // Show only the latest search in previous searches
-      //const previousSearches = document.getElementById("History");
-      //previousSearches.innerHTML = "";
-      //const newSearch = document.createElement("span");
-      //newSearch.textContent = domainInput;
-      //previousSearches.appendChild(newSearch);
+  // Build API URL
+  const apiUrl = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_9Cn3lniJtCJrh4fBKo8bbwLhOqDHt&domainName=${domainInput}&outputFormat=json`;
 
-      // Add all previous searches to history
-      appendSearchToHistory();
-    }
-  });
-
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-}
-document.getElementById("theme").addEventListener("click", toggleTheme);
-
-function fetchWhoisData(domain) {
-  fetch(
-    `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_9Cn3lniJtCJrh4fBKo8bbwLhOqDHt&domainName=${domain}&outputFormat=json`
-  )
+  return fetch(apiUrl, { method: "GET", redirect: "follow" })
     .then((response) => response.json())
-    .then((data) => {
-      console.log("Whois data:", data);
-      appendWhoisDataToDom(data);
+    .then((result) => {
+      console.log("API result:", result);
+
+      // Use the appendWhoisDataToDom function to display the data
+      appendWhoisDataToDom(result);
+
+      // Extract values from the API response for the not-registered check
+      const createdDate = result.WhoisRecord?.createdDate;
+      const updatedDate = result.WhoisRecord?.updatedDate;
+      const expiresDate = result.WhoisRecord?.expiresDate;
+      const registrant = result.WhoisRecord?.registrant;
+      const nameServers = result.WhoisRecord?.nameServers?.hostNames;
+
+      // If no whois data is found or the domain is not registered, display a message
+      if (
+        !createdDate &&
+        !updatedDate &&
+        !expiresDate &&
+        !registrant &&
+        !nameServers
+      ) {
+        searchResults.innerHTML = `<span>This Domain Name is not Registered</span>`;
+      }
     })
     .catch((error) => {
-      console.error("Error fetching Whois data:", error);
-      document.getElementById(
-        "searchResults"
-      ).innerHTML = `<span>Error: ${error.message}</span>`;
+      console.error("Fetch error:", error);
+      searchResults.innerHTML = `<span>Error: ${error}</span>`;
     });
 }
 
@@ -108,31 +73,31 @@ function appendWhoisDataToDom(whois) {
   `;
 }
 
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
 
 // Function to append search results to history
-  function appendSearchToHistory() {
-  const domainInput = document.getElementById("domainInput").value.trim();
-  if (domainInput) {
-    const historyList = document.getElementById("History");
-    // Remove the "No search history yet" message if present
-    if (historyList.textContent.includes("No search history yet")) {
-      historyList.innerHTML = "";
-    }
-    // Create a new span for this search
-    const historyItem = document.createElement("span");
-    historyItem.textContent = domainInput;
-    historyItem.classList.add("history-item");
-    historyItem.style.display = "inline-block";
-    historyItem.style.color = "blue";
-    historyItem.style.display = "flex";
-    historyItem.style.padding = "5px";
-    historyItem.style.border = "1px dotted #ccc";
-
-    historyItem.addEventListener("click", function () {
-      loadHistoryItem(domainInput);
-    });
-    historyList.appendChild(historyItem);
+function appendSearchToHistory(domainInput) {
+  const historyList = document.getElementById("History");
+  // Remove the "No search history yet" message if present
+  if (historyList.textContent.includes("No search history yet")) {
+    historyList.innerHTML = "";
   }
+  // Create a new span for this search
+  const historyItem = document.createElement("span");
+  historyItem.textContent = domainInput;
+  historyItem.classList.add("history-item");
+  historyItem.style.display = "inline-block";
+  historyItem.style.color = "blue";
+  historyItem.style.display = "flex";
+  historyItem.style.padding = "5px";
+  historyItem.style.border = "1px dotted #ccc";
+
+  historyItem.addEventListener("click", function () {
+    loadHistoryItem(domainInput);
+  });
+  historyList.appendChild(historyItem);
 }
 
 function loadHistoryItem(domain) {
@@ -141,3 +106,21 @@ function loadHistoryItem(domain) {
     fetchWhoisData(domain);
   }
 }
+
+function attachEventListeners() {
+  document
+    .getElementById("searchButton")
+    .addEventListener("click", handleSearchKeyPress);
+
+  document.getElementById("theme").addEventListener("click", toggleTheme);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  attachEventListeners();
+
+  // Check if there is any search history and display a message if not
+  const historyList = document.getElementById("History");
+  if (historyList.children.length === 0) {
+    historyList.innerHTML = "<span>No search history yet</span>";
+  }
+});
