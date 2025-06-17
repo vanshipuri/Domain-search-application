@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain Search Application</title>
+    <script
+      src="https://kit.fontawesome.com/f1459c0384.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="newstyle.css" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/8338/8338708.png"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <div id="header">
+            <h2>Domain Search Application</h2>
+          </div>
+        </a>
+        <div class="Mode">
+          <button id="theme" class="btn btn-sm w-auto mb-1">
+            <i class="fa fa-circle-half-stroke fa-sm"></i> Change Mode
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+          <form id="searchForm" class="input-group mb-3">
+            <input
+              type="text"
+              id="domainInput"
+              name="domainInput"
+              class="form-control"
+              placeholder="Eg-www.abc.com"
+              autofocus
+              required
+            />
+            <button
+              id="searchButton"
+              class="btn btn-primary ms-2"
+              type="submit"
+            >
+              <i class="fa-brands fa-searchengin"></i> Search
+            </button>
+          </form>
+        </div>
+      </div>
+      <br />
+      <div class="row justify-content-center g-4">
+        <div class="col-12 col-lg-8 mb-3" id="container-1">
+          <div class="p-4 rounded h-100">
+            <h3 class="mb-3" id="Results">
+              <i class="fa fa-search me-2"></i>Search Results
+            </h3>
+            <div id="searchResults" class="ps-2">
+              <i>
+                Eg:-Name: ABC.COM<br />
+                Domain Name: ABC.COM<br />
+                Domain Name Server: ns1.abc.com<br />
+                Domain Registered On: 1996-05-22T04:00:00Z <br />
+                Domain Expires On: 2026-05-23T04:00:00Z <br />
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-3" id="container-2">
+          <div class="p-4 rounded h-100">
+            <div id="PrvSearches" class="mb-3">
+              <strong
+                ><i class="fa fa-history me-2"></i>Previous Searches</strong
+              >
+            </div>
+            <div id="History" class="ps-2">No search history yet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

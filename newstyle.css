@@ -1,3 +1,6 @@
+/* ...existing styles... */
+
+
 body {
         font-family: Arial, sans-serif;
         background-color: #f3f0d1;
@@ -9,34 +12,16 @@ body {
         height: 100vh;
         }
 
-      h2 {
-        display: block;
-        margin:0 auto;
-        text-align: left; 
-        position: absolute;
-        padding: 20px;
-        top:0;
-        left:0;
-        right:0;
-        height: 20px;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 0 px 0 px 0px 0px;
-        background:  #5c4d4d46 ;
-        color:#5c4d4d ;
-      }
-
-      
-
-
-
 
       #theme{
+        display:block;
+        margin-top: 0 auto;
         padding: 10px;
         border:1px solid #a96851;
         border-radius: 10px;
         box-shadow: 4px #5c4d4d;
         cursor:pointer;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
       }
 
       #theme:hover{
@@ -44,23 +29,13 @@ body {
         color:#f9f9f9;
         transition:0.3s ease-in-out;
       }
-
-     .theme{
-        background: radial-gradient(328px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
-        padding: 10px;
-        display: block;
-        margin: auto;
-        max-width: 900px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
     
 
 
-      form {
+      .searchForm {
         display: flex;
         justify-content: center;
-        margin-top: 80px;
+        margin-top: 90px;
         padding: 30px;
       }
 
@@ -74,7 +49,7 @@ body {
             border: 2px solid #5c4d4d;
             box-shadow: 0 0 5px #332b2b;
         }
-      button {
+      .searchButton {
         padding: 10px 15px;
         margin-left: 10px;
       }
@@ -100,7 +75,7 @@ body {
       }
 
       #PrvSearches {
-        font-size: 1.25em;
+        font-size: 1.em;
         color: #915b4a;
         text-align: center;
         margin-top: 5px;
@@ -127,57 +102,77 @@ body {
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, font-size 0.3s ease-in-out;
       }
 
-      #main-container {
-        display: flex;
+
+
+#main-container {
+  /* Bootstrap grid handles layout, so only add spacing if needed */
+  padding: 20px 0;
+  margin-top: 20px;
+  justify-content: space-between;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:10px;
+  display: flex;
         flex-direction: row;
         justify-content: space-around;
         padding: 20px;
         margin-top: 20px;
         
-      }
+}
 
-      #container-1 {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-        width: 60%;
-        border: 1px solid #ccc;
-        padding: 15px;
-        border-radius: 3px;
-        cursor: pointer;
-       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.199);
-      }
+#container-1, #container-2 {
+  width: 67%;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.199);
+  margin-bottom: 20px;
+}
 
-      #container-1:hover{
+  #container-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px; 
+   /* margin-right: 10px; Added gap to the right of container 1 */
+ }
+
+ #container-1:hover{
         box-shadow: 10px 10px 20px rgba(0, 0,0 , 0.199);
         transition: 0.3s ease-in-out;
-      }
-
-      #container-2 {
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        padding: 5px;
-        margin-bottom: auto;
-        border-radius: 10px;
-        width: 20%;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 3px;
         cursor:pointer;
-       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.199);
       }
 
-      #container-2:hover{
+#container-2 {
+  display: flex;
+ flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#container-2:hover{
         box-shadow: 10px 10px 20px rgba(0, 0,0,0.199);
         transition: 0.3s ease-in-out;
+        cursor:pointer;
       }
 
 
-     #searchResults {
+@media (max-width: 767.98px) {
+  #container-1, #container-2 {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.5em;
+    padding: 10px;
+  }
+}
+
+
+#searchResults {
         display:flex;
         flex-direction: column;
         align-items: left;
@@ -225,10 +220,11 @@ body {
       }
 
       #theme{
-        margin-top: 70px;
+        margin-top: 0;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        gap: 4px;
         border: 1px solid #a96851;
         border-radius: 50px;
         box-shadow: 4px #5c4d4d;
@@ -240,7 +236,6 @@ body {
 }
 
 body.dark h2 {
-  background: #e1f7efb4;
   color: #272f35;
 }
 
@@ -256,9 +251,10 @@ body.dark #theme:hover {
      body.dark input,
      body.dark textarea,
     body.dark select {
-  background: #8da9aa;
+  background: #EBFFD8;
   color: #0d3238;
   border-color: #232e3a;
+  box-shadow: 4px 4px 8px rgba(228, 227, 227, 0.24);
 }
 body.dark #searchButton {
   background-color: #717880;;
@@ -273,7 +269,7 @@ body.dark #searchButton:hover {
 
      body.dark #container-1,
     body.dark #container-2 {
-  background-color:#7f89a0;
+  background-color: #7f89a0;
   color: #ffffffb0;
   border-color: #444;
   border: 1px;
@@ -302,3 +298,22 @@ body.dark #PrvSearches {
   text-align: center;
   margin-top: 5px;
 }
+
+.parent-class{
+  flex:1;
+}
+
+  #theme {
+  margin-top: 0 px;
+  margin-right: 0;
+  display:flex;
+  flex-direction: row;
+}
+
+#Mode {
+  display: flex;
+  align-items: center;
+  gap:4 px;
+} 
+  
+/* ...rest of your dark mode and other styles remain unchanged... */
